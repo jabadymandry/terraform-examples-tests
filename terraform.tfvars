@@ -1,7 +1,7 @@
 subnet_1      = "10.10.0.0/24"
 ami           = "ami-0fe472d8a85bc7b0e"
 project_name  = "Test"
-key_ssh       = "Test"
+key_ssh       = "ssh-test"
 instance_name = "instance"
 sg_egress = {
   "1" = {

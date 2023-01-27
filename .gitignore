@@ -1,5 +1,5 @@
 #ssh keys
-ssh*
+ssh-*.pem
 
 # Local .terraform directories
 **/.terraform/*

@@ -1,11 +1,11 @@
 terraform {
-  cloud {
+/*   cloud {
     organization = "emb"
     workspaces {
       name = "examples-tests-workspace"
     }
   }
-
+ */
   required_providers {
     aws = {
       source  = "hashicorp/aws"

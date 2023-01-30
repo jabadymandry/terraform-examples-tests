@@ -58,4 +58,8 @@ resource "aws_instance" "Instance1" {
     "Name"   = "${var.instance_name}-${var.project_name}"
     "Projet" = var.project_name
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

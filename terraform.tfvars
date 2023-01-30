@@ -1,5 +1,5 @@
 subnet_1      = "10.10.0.0/24"
-ami           = "ami-0fe472d8a85bc7b0e"
+ami           = "ami-00874d747dde814fa"
 project_name  = "Test"
 key_ssh       = "ssh-test"
 instance_name = "instance"

@@ -1,33 +1,32 @@
 resource "aws_security_group" "Sg1" {
   description = "SG-${var.project_name}"
   vpc_id      = aws_vpc.vpc.id
-
-  dynamic "egress" {
-    for_each = var.sg_egress
-    content {
-      description = egress.value.description
-      from_port   = egress.value.from_port
-      to_port     = egress.value.to_port
-      protocol    = egress.value.protocol
-      cidr_blocks = egress.value.cidr_block
-    }
-  }
-
-  dynamic "ingress" {
-    for_each = var.sg_ingress
-    content {
-      description = ingress.value.description
-      from_port   = ingress.value.from_port
-      to_port     = ingress.value.to_port
-      protocol    = ingress.value.protocol
-      cidr_blocks = ingress.value.cidr_block
-    }
-  }
-
+  name        = "test-${var.project_name}"
   tags = {
     "Projet" = var.project_name
   }
 }
+
+resource "aws_security_group_rule" "Sg-in-ssh" {
+  type              = "ingress"
+  description       = "Allow SSH from outside"
+  from_port         = "22"
+  to_port           = "22"
+  protocol          = "TCP"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.Sg1.id
+}
+
+resource "aws_security_group_rule" "Sg-in-icmp" {
+  type              = "ingress"
+  description       = "Allow PING from outside"
+  from_port         = "-1"
+  to_port           = "-1"
+  protocol          = "icmp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.Sg1.id
+}
+
 
 resource "aws_key_pair" "Ssh_Key" {
   key_name   = "${var.instance_name}-${var.key_ssh}"

@@ -3,7 +3,7 @@ output "Instance-Id" {
 }
 
 output "Instance-IpPublic" {
-  value = aws_eip.eip-igw.public_ip
+  value = aws_eip.eip.public_ip
 }
 
 output "Instance-Subnet" {

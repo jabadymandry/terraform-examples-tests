@@ -24,7 +24,7 @@ resource "aws_route_table_association" "rt-association" {
   subnet_id      = aws_subnet.subnet_1.id
 }
 
-resource "aws_eip" "eip-igw" {
+resource "aws_eip" "eip" {
   depends_on = [
     aws_internet_gateway.Igw
   ]

@@ -47,6 +47,15 @@ resource "aws_instance" "Instance1" {
   #associate_public_ip_address = true
   iam_instance_profile = var.iam_profile
 
+  user_data = <<-EOF
+  #! /bin/bash
+  apt-get update
+  apt-get install -y apache2
+  sed -i -e 's/80:8080' /etc/apache2/port.conf
+  echo "Hello ${var.project_name} server" > /var/www/html/index.html
+  systemctl restart apache2
+  EOF
+
   root_block_device {
     delete_on_termination = true
     volume_type           = "gp3"

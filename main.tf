@@ -1,5 +1,5 @@
 terraform {
-/*   cloud {
+  /*   cloud {
     organization = "emb"
     workspaces {
       name = "examples-tests-workspace"

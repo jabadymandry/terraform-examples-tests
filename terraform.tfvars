@@ -3,6 +3,8 @@ ami           = "ami-0fe472d8a85bc7b0e"
 project_name  = "Test"
 key_ssh       = "ssh-test"
 instance_name = "instance"
+instance_type = "t2.micro"
+
 sg_egress = {
   "1" = {
     cidr_block  = ["0.0.0.0/0"]
